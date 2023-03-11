@@ -1,0 +1,32 @@
+/* components/menu-item/menu-item.wxss */
+.top{
+  position: relative;
+  
+}
+
+.top .image {
+  width: 100%;
+  border-radius: 12rpx;
+}
+
+.top .count {
+  position: absolute;
+  right: 0;
+  bottom: 5rpx;
+  color: #fff;
+  font-size: 22rpx;
+  border-radius: 12rpx;
+  padding: 6rpx 10rpx;
+  background: rgba(0,0,0, .5);
+}
+
+.bottom {
+  margin-top: 5rpx;
+  font-size: 26rpx;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

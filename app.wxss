@@ -1,0 +1,6 @@
+/**app.wxss**/
+
+
+image {
+  vertical-align: top;
+} 

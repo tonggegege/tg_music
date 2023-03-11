@@ -1,0 +1,34 @@
+<!--components/menu-header/menu-header.wxml-->
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+
+<wxs module="com" src="../../utils/common.wxs"></wxs>
+
+<view class="content">
+  <image class="image" src="{{ contentData.coverImgUrl }}" mode="aspectFill"></image>
+
+  <view class="bg-cover"></view>
+
+  <view class="top">
+    <image class="top-image" mode="widthFix" src="{{ contentData.coverImgUrl }}"></image>
+
+    <view class="info">
+      <view class="title">{{ contentData.name }}</view>
+      <view class="anthor">
+        <image mode="widthFix" class="anthor-image" src="{{ contentData.creator.avatarUrl }}"></image>
+        <text class="nickname">{{ contentData.creator.nickname }}</text>
+      </view>
+      <view class="desc">{{ contentData.description }}</view>
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="favor item">
+      <image mode="widthFix" class="icon" src="/assets/images/icons/favor_icon.png"></image>
+      <text class="text">{{ format.formatCount(contentData.subscribedCount) }}</text>
+    </view>
+    <view class="share item">
+      <image mode="widthFix" class="icon" src="/assets/images/icons/share_icon.png"></image>
+      <text class="text">分享</text>
+    </view>
+  </view>
+  
+</view>

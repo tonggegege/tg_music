@@ -1,0 +1,124 @@
+<!--pages/music-player/music-player.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+
+<view class="music-player" >
+  <image 
+  class="bg-image" 
+  mode="aspectFill" 
+  src="{{ songDetail.al.picUrl }}"
+/> 
+<view class="cover"></view>
+<view style="height: {{ statusHeight }}px;"></view>
+<view class="top-bar">
+  <nav-bar>
+    <view slot="left" bindtap="onBackClick">
+      <van-icon name="arrow-left" color="#fff" size="{{ 20 }}"/>
+    </view>
+
+    <view slot="center" class="allTitle">
+      <block wx:for="{{ pageTitles }}" wx:key="*this">
+        <view 
+          class="singerTitle {{ currentIndex === index ? 'active': '' }}" 
+          bindtap="onTitleClick"
+          data-index="{{ index }}"
+        >{{ item }}</view>
+        <text wx:if="{{ index !== pageTitles.length - 1 }}" class="line">|</text>
+      </block>
+    </view>
+  </nav-bar>
+</view>
+
+<swiper 
+  style="height: {{ contentHeight }}px;"
+  current="{{ currentIndex }}"
+  bindchange="onSwiperChange"
+  class="swiper"
+>
+  <swiper-item class="swiper-item first">
+    <view class="album">
+      <image class="image" mode="widthFix" src="{{ songDetail.al.picUrl }}"></image>
+    </view>
+
+    <view class="info">
+      <view class="singName">{{ songDetail.name }}</view>
+      <view class="author">{{ common.mergeName(songDetail.ar) }}</view>
+    </view>
+
+    <view class="lyric">
+      {{ lyricArr[currentTextIndex].text }}
+    </view>
+
+    <view class="progress">
+      <slider 
+        class="slider"
+        block-color="#43c162"
+        block-size="13"
+        value="{{ silderValue }}"
+        bindchange="onSliderChange"
+        bindchanging="onsliderChanging"
+      ></slider>
+      <view class="time">
+        <view class="current">{{ format.formatTime(currentTime) }}</view>
+        <view class="duration">{{ format.formatTime(durationTime) }}</view>
+      </view>
+    </view>
+
+    <view class="controls">
+      <image 
+        class="btn mode" 
+        mode="widthFix" 
+        bindtap="onModeClick"
+        src="/assets/images/player/play_{{ mode }}.png"
+      />
+      <image 
+        class="btn prev" 
+        mode="widthFix" 
+        bindtap="onPrevClick"
+        src="/assets/images/player/play_prev.png"
+      />
+      <image 
+        class="btn play" 
+        mode="widthFix" 
+        src="/assets/images/player/play_{{ isPlay ? 'pause':'resume' }}.png"
+        bindtap="onPlayClick"
+      />
+      <image 
+        class="btn next" 
+        mode="widthFix" 
+        bindtap="onNextClick"
+        src="/assets/images/player/play_next.png"
+        />
+      <image 
+        class="btn list" 
+        mode="widthFix" 
+        src="/assets/images/player/play_music.png"
+      />
+    </view>
+
+  </swiper-item>
+  <swiper-item>
+    <scroll-view
+      scroll-y
+      class="lyric-list"
+      scroll-top="{{ currentTextIndex * 35 }}"
+      scroll-with-animation
+    >
+      <block wx:for="{{ lyricArr }}" wx:key="index">
+        <view 
+          class="item {{ currentTextIndex === index ? 'active': '' }}" 
+          style="padding-top: {{ index === 0 ? (contentHeight/2-66):0 }}px; padding-bottom: {{ index === lyricArr.length - 1 ? (contentHeight/2+15):0 }}px;">{{ item.text }}
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+</view>
+
+
+
+
+
+
+
+

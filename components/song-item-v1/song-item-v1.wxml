@@ -1,0 +1,15 @@
+<!--components/song-item-v1/song-item-v1.wxml-->
+<wxs src="/utils/common.wxs" module="com" ></wxs>
+
+<view class="song-item-v1">
+  <view class="album">
+    <image class="image" src="{{ itemData.al.picUrl }}"></image>
+  </view>
+
+  <view class="content">
+    <view class="name">{{ itemData.al.name }}</view>
+    <view class="source">{{ com.mergeName(itemData.ar) }}</view>
+  </view>
+
+  <van-icon name="arrow" color="#999"/>
+</view>

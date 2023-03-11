@@ -1,0 +1,25 @@
+<!--components/menu-area/menu-area.wxml-->
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+
+<view class="menu-area">
+
+  <area-header 
+    title="{{title}}" 
+    hasMore="{{ hasMore }}"
+    bind:onMoreClick="onMoreClick"
+  ></area-header>
+
+
+  <scroll-view
+    enable-flex
+    scroll-x
+    class="scroll"
+    style="width: {{ screenWidth }}px;"
+  >
+    <block wx:for="{{ MenuListData }}" wx:key="id">
+      <view class="item">
+        <menu-item itemData="{{ item }}"></menu-item>
+      </view>
+    </block>
+  </scroll-view>
+</view> 

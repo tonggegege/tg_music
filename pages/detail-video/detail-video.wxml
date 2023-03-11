@@ -1,0 +1,13 @@
+<!--pages/detail-video/detail-video.wxml-->
+<video 
+  class="video"
+  src="{{mvUrl}}"
+  referrer-policy="origin"
+  loop
+></video>
+
+<scroll-view class="content" scroll-y>
+  <view class="test">111</view>
+
+  
+</scroll-view>

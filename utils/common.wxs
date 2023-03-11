@@ -1,0 +1,16 @@
+function mergeName(nameArr) {
+  if (!nameArr) return
+  var nameString = ""
+  for(var i = 0; i < nameArr.length; i++) {
+    var singName = nameArr[i].name
+
+    nameString += singName + " - "
+  }
+
+
+  return nameString.slice(0, nameString.length - 3)
+}
+
+module.exports = {
+  mergeName: mergeName
+}

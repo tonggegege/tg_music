@@ -1,0 +1,21 @@
+<!--components/song-item-v2/song-item-v2.wxml-->
+<wxs module="com" src="../../utils/common.wxs"></wxs>
+
+<view class="item" bindtap="onSongItemClick">
+  <view class="index">{{ number }}</view>
+
+  <view class="info">
+    <view class="title">{{ itemTracksData.al.name }}</view>
+    <view class="source">
+      <image class="image" src="/assets/images/icons/sq_icon.png"></image>
+      <text>{{ com.mergeName(itemTracksData.ar) }}</text>
+    </view>
+  </view>
+
+  <van-icon 
+    class="more-icon" 
+    size="21px" 
+    name="more-o" 
+    catchtap="onMoreIconTap" 
+  />
+</view>

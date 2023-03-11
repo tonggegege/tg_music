@@ -1,0 +1,72 @@
+/* pages/main-music/main-music.wxss */
+page {
+  --search-padding: 10px 0px;
+  --search-background-color: #fff;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+  background-color: #fafafa;
+}
+
+.swiper .select-image {
+  width: 100%;
+}
+
+.play-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 44px;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 8px;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  background: #fafafa;
+}
+
+.play-bar .left {
+  
+  height: 100%;
+}
+
+.play-bar .left {
+  display: flex;
+  align-items: center;
+}
+
+.play-bar .left .image{
+  position: relative;
+  top: -8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  animation: isCrycle 10s linear infinite;
+}
+
+.play-bar .right .item {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.play-bar .right .item.play {
+  margin-right: 15rpx;
+}
+
+.play-bar-placeholder {
+  margin-bottom: 44px;
+}
+
+@keyframes isCrycle {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+

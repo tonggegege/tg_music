@@ -1,0 +1,24 @@
+<!--components/ranking-item/ranking-item.wxml-->
+<wxs module="com" src="../../utils/common.wxs"></wxs>
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+
+<view class="ranking-item">
+  <view class="content">
+    <view class="name">{{ rankingData.name }}</view>
+    <view class="list">
+      <block wx:for="{{ 3 }}" wx:key="*this">
+        <view class="item">
+          <text>{{ index + 1 }}.</text>
+          <text> {{ rankingData.tracks[index].name }}</text>
+          <text> - {{com.mergeName(rankingData.tracks[index].ar)}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="album">
+    <image class="image" mode="widthFix" src="{{rankingData.coverImgUrl}}"></image>
+
+    <view class="count">{{ format.formatCount(rankingData.playCount) }}</view>
+  </view>
+</view>

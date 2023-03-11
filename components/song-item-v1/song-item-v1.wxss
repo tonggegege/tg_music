@@ -1,0 +1,30 @@
+/* components/song-item-v1/song-item-v1.wxss */
+.song-item-v1 {
+  display: flex;
+  padding: 16rpx 0;
+  align-items: center;
+}
+
+.song-item-v1 .album {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.song-item-v1 .album .image {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+.song-item-v1 .content {
+  flex: 1;
+  margin-left: 16rpx;
+  font-size: 32rpx;
+  color: #555;
+}
+
+.song-item-v1 .content .source {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999;
+}

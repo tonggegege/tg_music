@@ -1,0 +1,113 @@
+<!--pages/main-music/main-music.wxml-->
+<van-search 
+  value="{{ searchValue }}" 
+  placeholder="请输入搜索关键词" 
+  background="#fafafa"
+  shape="round"
+  bind:click-input="vanSearchTap"
+/>
+
+<swiper 
+  class="swiper"
+  indicator-dots
+  indicator-active-color="#26ce8a"
+  autoplay
+  circular
+  style="height: {{ bannerHeight }}px;"
+>
+  <block wx:for="{{ banners }}" wx:key="targetId">
+    <swiper-item>
+      <image 
+        class="select-image" 
+        mode="widthFix" 
+        src="{{ item.imageUrl }}"
+        bindload="listenImageLoaded"
+      />
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="recommond">
+  <area-header 
+    title="推荐歌曲" 
+    hasMore="{{ true }}"
+    bind:onMoreClick="onMoreClick"
+  ></area-header>
+
+  <view class="recommond-list">
+    <view class="list">
+      <block wx:for="{{ recommendSongList }}" wx:key="id">
+        <song-item-v1 
+          itemData="{{ item }}"
+          bindtap="onSongItemClick"
+          data-id="{{ item.id }}"
+          data-index="{{ index }}"
+        ></song-item-v1>
+      </block>
+    </view>
+  </view>
+</view>
+
+<view class="hot-menu" wx:if="{{ hotMenuList }}">
+  <menu-area 
+    title="热门歌单"
+    hasMore="{{ true }}" 
+    MenuListData="{{ hotMenuList }}"
+  ></menu-area>
+</view>
+
+<view class="recommend-menu" wx:if="{{ recommendMenuList }}">
+  <menu-area
+    title="推荐歌单"
+    hasMore="{{ true }}" 
+    MenuListData="{{ recommendMenuList }}"
+  ></menu-area>
+</view>
+
+<view class="top-ranking" wx:if="{{ rankingList }}">
+  <area-header title="巅峰磅" hasMore="{{ false }}"></area-header>
+  <block wx:for="{{ rankingList }}" wx:key="id">
+    <ranking-item 
+      rankingData="{{ item }}" 
+      rankingName="{{ index }}"
+      bindtap="onRankingClick"
+      data-type="ranking"
+      data-rankingItem="{{ index }}"
+    ></ranking-item>
+  </block>
+</view>
+
+<view class="play-bar-placeholder" wx:if="{{ songDetail.name }}"></view>
+<view class="play-bar" 
+  wx:if="{{ songDetail.name }}"
+  
+>
+   <view class="left">
+    <image 
+      mode="widthFix" 
+      src="{{ songDetail.al.picUrl }}"
+      class="image"
+      bindtap="onPlayBarClick"
+      style="animation-play-state: {{ isPlay? 'running': 'paused' }};"
+    />
+
+    <text>{{ songDetail.name }}</text>
+   </view>
+   <view class="right">
+    <image 
+      mode="widthFix"
+      src="/assets/images/music/{{ isPlay ? 'pause': 'play' }}_icon.png"
+      class="item play"
+      bindtap="onPlayerClick"
+    />
+    <image 
+      mode="widthFix"
+      src="/assets/images/music/playlist_icon.png"
+      class="item list"
+    />
+   </view>
+</view>
+
+
+
+

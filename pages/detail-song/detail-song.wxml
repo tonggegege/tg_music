@@ -1,0 +1,24 @@
+<!--pages/detail-song/detail-song.wxml-->
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+
+<wxs module="com" src="../../utils/common.wxs"></wxs>
+<view class="detail-song" wx:if="{{ itemData }}">
+
+  <menu-header contentData="{{ itemData }}" wx:if="{{ type === 'menuSong' }}"></menu-header>
+
+  <view class="title" wx:else>
+    {{ itemData.name }}
+  </view>
+
+
+  <view class="song-list">
+    <block wx:for="{{ itemData.tracks }}" wx:key="id">
+      <song-item-v2 
+        itemTracksData="{{ item }}" 
+        number="{{ index + 1 }}"
+        data-index="{{ index }}"
+        bindtap="onSongItemV2Click"
+      ></song-item-v2>
+    </block>
+  </view>
+</view>
